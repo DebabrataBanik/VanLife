@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Link } from "react-router"
 import Home from './pages/Home'
 import About from './pages/About'
 import Vans from "./pages/Vans"
+import VanDetail from "./pages/VanDetail"
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
         <Route index element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/vans" element={<Vans />} />
+        <Route path="/vans/:id" element={<VanDetail />} />
       </Routes>
       <footer>
         Ⓒ 2026 #VANLIFE

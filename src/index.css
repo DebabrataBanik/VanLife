@@ -121,7 +121,7 @@ footer {
   font-size: 14px;
   color: var(--color-footer-foreground);
   background-color: var(--color-footer-background);
-  padding: 25px 0;
+  padding: 20px;
   text-align: center;
 }
 
@@ -286,4 +286,46 @@ main .cta {
 .van-type.Luxury {
   background-color: #161616;
   color: #FFEAD0;
+}
+
+.detail-page {
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.van-detail_container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  & img {
+    border-radius: 10px;
+  }
+}
+
+.van-detail_container .van-type {
+  font-size: 16px;
+  padding: 8px 15px;
+}
+
+.van-detail_container h3 {
+  font-size: 24px;
+}
+
+.van-detail_container .price {
+  font-size: 20px;
+
+  & span {
+    font-weight: 700;
+  }
+}
+
+.van-detail_container .cta {
+  margin-top: 10px;
+  background-color: var(--color-button-primary);
+  border-radius: 5px;
+  text-align: center;
+  padding: 10px;
+  font-weight: 700;
+  color: white;
 }

@@ -11,7 +11,7 @@ export default function Vans() {
       <div className='van-list_container'>
         {
           vansData.map(van => (
-            <Van data={van} />
+            <Van key={van.id} data={van} />
           ))
         }
       </div>
