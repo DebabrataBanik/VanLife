@@ -99,7 +99,7 @@ header {
 
 .site-logo {
   font-weight: 800;
-  font-size: 32px;
+  font-size: 24px;
   color: black;
 }
 
@@ -109,6 +109,11 @@ nav {
   display: flex;
   align-items: center;
   gap: 2rem;
+  font-size: 14px;
+
+  & a:hover {
+    text-decoration: underline;
+  }
 }
 
 footer {
@@ -121,11 +126,12 @@ footer {
 }
 
 main {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.46), rgba(0, 0, 0, 0.46)), url("./assets/images/home-hero.png") no-repeat center center;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.46), rgba(0, 0, 0, 0.46)), url("./assets/images/home-hero.jpg") no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-position: left;
   min-height: 350px;
   color: white;
   padding-block: 150px;
@@ -167,7 +173,7 @@ main .cta {
   overflow: hidden;
 
   & img {
-    object-fit: contain;
+    object-fit: cover;
   }
 }
 
@@ -205,37 +211,79 @@ main .cta {
   margin-top: 10px;
 }
 
-/* @media (max-width: 600px) {
-  header {
-    padding-inline: 20px;
-  }
+.vans-page {
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
 
-  main {
-    padding-block: 150px;
-  }
+.vans-page h1 {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
 
-  main div {
-    margin-inline: 20px;
-  }
+.van-list_container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
 
-  main h1 {
-    font-size: 36px;
-  }
+.van-item {
+  display: flex;
+  flex-direction: column;
+}
 
-  main p {
-    font-size: 1rem;
-  }
+.van-item img {
+  aspect-ratio: 1;
+  border-radius: 10px;
+}
 
-  main button {
-    width: 100%;
-  }
+.van-info {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
 
-  .about-content_wrapper {
-    padding-inline: 20px;
-    margin-block: 20px;
-  }
+.van-info h3 {
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 600;
+}
 
-  .about-cta {
-    width: 100%;
+.van-info p {
+  font-size: 12px;
+  line-height: 1;
+  text-align: right;
+
+  & span {
+    font-size: 14px;
+    font-weight: 600;
   }
-} */
+}
+
+.van-type {
+  margin-top: 0.5rem;
+  font-size: 12px;
+  font-weight: 500;
+  display: block;
+  width: fit-content;
+  padding: 5px 8px;
+  line-height: 1;
+  background-color: #FF8C38;
+  border-radius: 5px;
+}
+
+.van-type.Simple {
+  background-color: #E17654;
+  color: #FFEAD0;
+}
+
+.van-type.Rugged {
+  background-color: #115E59;
+  color: #FFEAD0;
+}
+
+.van-type.Luxury {
+  background-color: #161616;
+  color: #FFEAD0;
+}

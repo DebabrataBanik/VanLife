@@ -1,0 +1,20 @@
+import vansData from '../data.json'
+import Van from '../components/Van'
+
+export default function Vans() {
+  return (
+    <div className='vans-page'>
+      <h1 className='van'>Explore our van options</h1>
+      <div className='filters'>
+
+      </div>
+      <div className='van-list_container'>
+        {
+          vansData.map(van => (
+            <Van data={van} />
+          ))
+        }
+      </div>
+    </div>
+  )
+}

@@ -1,5 +1,5 @@
 import { Link } from 'react-router'
-import HeroImg from '../assets/images/about-hero.png'
+import HeroImg from '../assets/images/about-hero.jpg'
 
 export default function About() {
   return (
