@@ -90,6 +90,12 @@ a {
   color: var(--color-foreground);
 }
 
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 header {
   padding: 30px 20px;
   display: flex;
@@ -117,6 +123,7 @@ nav {
 }
 
 footer {
+  margin-top: auto;
   font-weight: 500;
   font-size: 14px;
   color: var(--color-footer-foreground);
@@ -125,7 +132,7 @@ footer {
   text-align: center;
 }
 
-main {
+.home {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.46), rgba(0, 0, 0, 0.46)), url("./assets/images/home-hero.jpg") no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -137,7 +144,7 @@ main {
   padding-block: 150px;
 }
 
-main div {
+.home div {
   margin-inline: 20px;
   display: flex;
   flex-direction: column;
@@ -145,18 +152,18 @@ main div {
   color: white;
 }
 
-main h1 {
+.home h1 {
   font-weight: 900;
   font-size: 36px;
   line-height: 42px;
 }
 
-main p {
+.home p {
   font-weight: 500;
   line-height: 24px;
 }
 
-main .cta {
+.home .cta {
   text-align: center;
   background-color: var(--color-button-primary);
   color: white;

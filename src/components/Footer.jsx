@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer>
-      Ⓒ 2026 #VANLIFE
+      &#169; 2026 #VANLIFE
     </footer>
   )
 }
