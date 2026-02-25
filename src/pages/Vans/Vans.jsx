@@ -1,5 +1,5 @@
-import vansData from '../data.json'
-import Van from '../components/Van'
+import vansData from '../../data.json'
+import Van from '../../components/subcomponents/Van'
 
 export default function Vans() {
   return (

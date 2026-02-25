@@ -1,12 +1,11 @@
 import { useParams } from "react-router"
-import vansData from '../data.json'
+import vansData from '../../data.json'
 import { Link } from "react-router"
 
 export default function VanDetail() {
 
   const params = useParams()
   const data = vansData.find(van => van.id === params.id)
-  console.log(data)
 
   return (
     <div className="detail-page">

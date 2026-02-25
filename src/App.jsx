@@ -1,28 +1,22 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router"
+import { BrowserRouter, Routes, Route } from "react-router"
 import Home from './pages/Home'
 import About from './pages/About'
-import Vans from "./pages/Vans"
-import VanDetail from "./pages/VanDetail"
+import Vans from "./pages/Vans/Vans"
+import VanDetail from "./pages/Vans/VanDetail"
+import Layout from "./components/Layout"
 
 export default function App() {
   return (
     <BrowserRouter>
-      <header>
-        <Link className="site-logo" to='/'>#VANLIFE</Link>
-        <nav>
-          <Link to='/about'>About</Link>
-          <Link to='/vans'>Vans</Link>
-        </nav>
-      </header>
       <Routes>
-        <Route index element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/vans" element={<Vans />} />
-        <Route path="/vans/:id" element={<VanDetail />} />
+        <Route element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="vans" element={<Vans />} />
+          <Route path="vans/:id" element={<VanDetail />} />
+        </Route>
       </Routes>
-      <footer>
-        Ⓒ 2026 #VANLIFE
-      </footer>
+
     </BrowserRouter>
   )
 }
