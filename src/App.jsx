@@ -10,6 +10,9 @@ import Income from "./pages/Host/Income"
 import Reviews from "./pages/Host/Reviews"
 import HostVans from "./pages/Host/HostVans"
 import HostVanDetail from "./pages/Host/HostVanDetail"
+import Details from "./pages/Host/Details"
+import Pricing from "./pages/Host/Pricing"
+import Photos from "./pages/Host/Photos"
 
 export default function App() {
   return (
@@ -26,7 +29,12 @@ export default function App() {
             <Route path="income" element={<Income />} />
             <Route path="reviews" element={<Reviews />} />
             <Route path="vans" element={<HostVans />} />
-            <Route path="vans/:id" element={<HostVanDetail />} />
+
+            <Route path="vans/:id" element={<HostVanDetail />}>
+              <Route index element={<Details />} />
+              <Route path="pricing" element={<Pricing />} />
+              <Route path="photos" element={<Photos />} />
+            </Route>
           </Route>
         </Route>
       </Routes>

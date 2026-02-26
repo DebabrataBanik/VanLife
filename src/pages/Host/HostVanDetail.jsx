@@ -1,0 +1,46 @@
+import { useParams, NavLink, Outlet } from "react-router"
+import vansData from '../../data.json'
+
+export default function HostVanDetail() {
+
+  const { id } = useParams()
+  const data = vansData.find(van => van.id === id)
+
+  return (
+    <div className="host-van-detail_container">
+      <div className="host-van-detail-top">
+        <img src={data.imageUrl} alt={data.name} />
+        <div className="host-van-detail-info">
+          <span className={`van-type ${data.type}`}>{data.type}</span>
+          <h3>{data.name}</h3>
+          <p><span>${data.price}</span>/day</p>
+        </div>
+      </div>
+      <div className="host-van-detail-bottom">
+        <nav>
+          <NavLink
+            to='.'
+            end
+            className={({ isActive }) => isActive ? 'active' : null}
+          >
+            Details
+          </NavLink>
+          <NavLink
+            to='pricing'
+            className={({ isActive }) => isActive ? 'active' : null}
+          >
+            Pricing
+          </NavLink>
+          <NavLink
+            to='photos'
+            className={({ isActive }) => isActive ? 'active' : null}
+          >
+            Photos
+          </NavLink>
+        </nav>
+        <Outlet context={data} />
+      </div>
+
+    </div>
+  )
+}
