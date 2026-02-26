@@ -1,6 +1,7 @@
 import { useParams } from "react-router"
 import vansData from '../../data.json'
 import { Link } from "react-router"
+import { ArrowLeft } from "lucide-react"
 
 export default function VanDetail() {
 
@@ -9,6 +10,15 @@ export default function VanDetail() {
 
   return (
     <div className="detail-page">
+      <Link
+        to='..'
+        relative="path"
+        className="back"
+      >
+        <ArrowLeft size={15} />
+        Back to all vans
+      </Link>
+
       <div className="van-detail_container">
         <img src={data.imageUrl} alt={data.name} />
         <span className={`van-type ${data.type}`}>{data.type}</span>

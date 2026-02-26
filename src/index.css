@@ -466,3 +466,24 @@ footer {
   border-radius: 5px;
   width: 100px;
 }
+
+.detail-page .back {
+  margin-block: 0 1.5rem;
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  margin-block: 2rem 1rem;
+  width: fit-content;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:hover svg {
+    transform: translateX(-2px);
+  }
+}
