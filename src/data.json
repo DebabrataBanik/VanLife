@@ -5,7 +5,8 @@
     "price": 60,
     "imageUrl": "/vans/van1.png",
     "description": "The Modest Explorer is a van designed for the adventurous traveler who wants to explore the world in style. With its sleek design and comfortable interior, this van is perfect for those who want to hit the road and see where it takes them.",
-    "type": "Simple"
+    "type": "Simple",
+    "hostId": 123
   },
   {
     "id": "2",
@@ -21,7 +22,8 @@
     "price": 100,
     "imageUrl": "/vans/van3.png",
     "description": "The Reliable Red is a van designed for those who want a dependable vehicle that can take them anywhere. With its sturdy build and reliable engine, this van is perfect for those who want to explore the world without worrying about breakdowns.",
-    "type": "Luxury"
+    "type": "Luxury",
+    "hostId": 123
   },
   {
     "id": "4",
@@ -45,6 +47,7 @@
     "price": 90,
     "imageUrl": "/vans/van6.png",
     "description": "The Adventurer is a van designed for those who want to explore the world and have fun doing it. With its rugged design and spacious interior, this van is perfect for those who want to hit the road and see where it takes them.",
-    "type": "Rugged"
+    "type": "Rugged",
+    "hostId": 123
   }
 ]
