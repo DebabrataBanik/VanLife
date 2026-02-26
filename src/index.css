@@ -87,7 +87,9 @@ body {
 
 a {
   text-decoration: none;
-  color: var(--color-foreground);
+  color: var(--color-nav);
+  text-align: center;
+  font-weight: 600;
 }
 
 .app-container {
@@ -111,13 +113,13 @@ header {
 
 nav {
   font-size: 16px;
-  font-weight: 600;
   display: flex;
   align-items: center;
   gap: 2rem;
   font-size: 14px;
 
   & a:hover {
+    text-shadow: 0.5px 0 0 var(--color-nav);
     text-decoration: underline;
   }
 }
@@ -335,4 +337,13 @@ footer {
   padding: 10px;
   font-weight: 700;
   color: white;
+}
+
+.host-layout {
+  padding: 1rem;
+}
+
+a.active {
+  text-decoration: underline;
+  text-shadow: 0.5px 0 0 var(--color-nav);
 }
