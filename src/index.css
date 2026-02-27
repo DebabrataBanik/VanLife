@@ -238,6 +238,61 @@ footer {
   margin-bottom: 1rem;
 }
 
+.filters {
+  margin-bottom: 2rem;
+  font-size: 12px;
+  display: flex;
+  gap: 5px;
+}
+
+.filters button {
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #FFEAD0;
+  color: var(--color-nav);
+  line-height: normal;
+}
+
+.filters .simple:hover {
+  background-color: #E17654;
+  color: #FFEAD0;
+}
+
+.filters .simple.selected {
+  background-color: #E17654;
+  color: #FFEAD0;
+}
+
+.filters .rugged:hover {
+  background-color: #115E59;
+  color: #FFEAD0;
+}
+
+.filters .rugged.selected {
+  background-color: #115E59;
+  color: #FFEAD0;
+}
+
+.filters .luxury:hover {
+  background-color: #161616;
+  color: #FFEAD0;
+}
+
+.filters .luxury.selected {
+  background-color: #161616;
+  color: #FFEAD0;
+}
+
+.filters button.clear {
+  background-color: transparent;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .van-list_container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
