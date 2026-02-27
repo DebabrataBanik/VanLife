@@ -113,11 +113,12 @@ nav {
   font-size: 16px;
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
 
   & a:hover {
     text-shadow: 0.5px 0 0 var(--color-nav);
     text-decoration: underline;
+    color: var(--color-foreground);
   }
 }
 
@@ -129,6 +130,7 @@ header nav a {
 header nav a.active {
   text-decoration: underline;
   text-shadow: 0.5px 0 0 var(--color-nav);
+  color: var(--color-foreground);
 }
 
 footer {
@@ -561,4 +563,63 @@ footer {
   color: #FFF7ED;
   border-radius: 5px;
   padding: 10px;
+}
+
+.login-page {
+  padding: 1rem;
+  margin-top: 3rem;
+}
+
+.login-page h1 {
+  text-align: center;
+}
+
+.form {
+  margin-block: 2rem;
+}
+
+.form input {
+  width: 100%;
+  color: var(--color-nav);
+  height: 40px;
+  padding-left: 1rem;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.email {
+  border-radius: 6px 6px 0 0;
+  border: 1px solid #D1D5DB;
+  border-bottom: none;
+}
+
+.pw {
+  border-radius: 0 0 6px 6px;
+  border: 1px solid #D1D5DB;
+}
+
+.form button {
+  margin-top: 1rem;
+  width: 100%;
+  text-align: center;
+  background-color: var(--color-button-primary);
+  color: white;
+  padding: 10px;
+  font-weight: 700;
+  border: none;
+  border-radius: 6px;
+}
+
+.login-page p {
+  text-align: center;
+
+  & span {
+    color: var(--color-button-primary);
+  }
+}
+
+.login-msg {
+  color: red;
 }
