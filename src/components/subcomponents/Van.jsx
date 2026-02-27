@@ -1,9 +1,12 @@
 import { Link } from "react-router"
 
-export default function Van({ data }) {
+export default function Van({ data, searchParams }) {
   return (
     <div className="van-item">
-      <Link to={`/vans/${data.id}`}>
+      <Link
+        to={data.id}
+        state={{ search: `?${searchParams.toString()}` }}
+      >
         <img src={data.imageUrl} alt={data.name} />
         <span className={`van-type ${data.type}`}>{data.type}</span>
         <div className="van-info">

@@ -1,6 +1,6 @@
 import { useParams } from "react-router"
 import vansData from '../../data.json'
-import { Link } from "react-router"
+import { Link, useLocation } from "react-router"
 import { ArrowLeft } from "lucide-react"
 
 export default function VanDetail() {
@@ -8,10 +8,13 @@ export default function VanDetail() {
   const params = useParams()
   const data = vansData.find(van => van.id === params.id)
 
+  const location = useLocation()
+  const search = location.state?.search || ''
+
   return (
     <div className="detail-page">
       <Link
-        to='..'
+        to={`..${search}`}
         relative="path"
         className="back"
       >
