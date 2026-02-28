@@ -105,7 +105,7 @@ header {
 
 .site-logo {
   font-weight: 800;
-  font-size: 24px;
+  font-size: 20px;
   color: black;
 }
 
@@ -583,6 +583,7 @@ footer {
   color: var(--color-nav);
   height: 40px;
   padding-left: 1rem;
+  font-size: 14px;
 
   &:focus {
     outline: none;
@@ -610,6 +611,16 @@ footer {
   font-weight: 700;
   border: none;
   border-radius: 6px;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 1px 1px 1px var(--color-footer-foreground);
+  }
+}
+
+
+.login-page h1 {
+  line-height: normal;
 }
 
 .login-page p {
@@ -617,9 +628,25 @@ footer {
 
   & span {
     color: var(--color-button-primary);
+
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+
+    }
   }
 }
 
 .login-msg {
   color: red;
+  font-size: 14px;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+}
+
+.msg {
+  font-size: 12px;
 }
