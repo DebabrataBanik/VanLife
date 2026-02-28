@@ -31,7 +31,7 @@
     "price": 150,
     "imageUrl": "/vans/van4.png",
     "description": "The Dreamfinder is a van designed for those who want to live their dreams on the road. With its luxurious interior and state-of-the-art features, this van is perfect for those who want to experience the ultimate road trip.",
-    "type": "Simple"
+    "type": "Luxury"
   },
   {
     "id": "5",
@@ -39,7 +39,7 @@
     "price": 120,
     "imageUrl": "/vans/van5.png",
     "description": "The Cruiser is a van designed for those who want to cruise the open road in style. With its sleek design and comfortable interior, this van is perfect for those who want to hit the road and see where it takes them.",
-    "type": "Luxury"
+    "type": "Rugged"
   },
   {
     "id": "6",
