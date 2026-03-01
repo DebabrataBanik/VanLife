@@ -451,6 +451,10 @@ footer {
   }
 }
 
+.host-van-detail-layout {
+  padding: 1rem;
+}
+
 .host-van-detail_container {
   margin-block: 1rem;
   background-color: white;

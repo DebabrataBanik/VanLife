@@ -8,7 +8,7 @@ export default function HostVanDetail() {
   const data = vansData.find(van => van.id === id)
 
   return (
-    <>
+    <div className="host-van-detail-layout">
       <Link
         to='..'
         relative="path"
@@ -52,6 +52,6 @@ export default function HostVanDetail() {
         </div>
 
       </div>
-    </>
+    </div>
   )
 }
