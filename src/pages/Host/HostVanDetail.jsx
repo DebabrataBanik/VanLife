@@ -1,11 +1,36 @@
 import { useParams, NavLink, Outlet, Link } from "react-router"
-import vansData from '../../data.json'
+import { getVan } from "../../api"
 import { ArrowLeft } from "lucide-react"
+import { useEffect, useState } from "react"
 
 export default function HostVanDetail() {
 
+  const [data, setData] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
   const { id } = useParams()
-  const data = vansData.find(van => van.id === id)
+
+  useEffect(() => {
+    async function fetchVan() {
+      try {
+        const data = await getVan(id)
+        setData(data)
+      } catch (err) {
+        setError(err?.message || "An error occurred while fetching van details.")
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchVan()
+  }, [id])
+
+  if (loading) {
+    return <h1 className="status-msg">Loading...</h1>
+  }
+
+  if (error) {
+    return <h1 className="status-msg error">{error}</h1>
+  }
 
   return (
     <div className="host-van-detail-layout">

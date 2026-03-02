@@ -150,9 +150,11 @@ footer {
   -o-background-size: cover;
   background-size: cover;
   background-position: left;
-  min-height: 350px;
+  min-height: 90vh;
   color: white;
-  padding-block: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .home div {
@@ -453,6 +455,7 @@ footer {
 
 .host-van-detail-layout {
   padding: 1rem;
+  padding-top: 0;
 }
 
 .host-van-detail_container {
@@ -791,4 +794,10 @@ h2 {
 
 .reviews-img-container {
   max-width: 500px;
+}
+
+/* State handling */
+
+.status-msg {
+  padding: 1rem;
 }
