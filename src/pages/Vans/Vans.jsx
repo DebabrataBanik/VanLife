@@ -1,6 +1,6 @@
 import Van from '../../components/subcomponents/Van'
 import { useSearchParams } from 'react-router'
-import { getVans } from '../../api'
+import { getVans } from '../../services/api'
 import { useEffect, useState } from 'react'
 
 export default function Vans() {

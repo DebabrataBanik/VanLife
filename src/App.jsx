@@ -15,6 +15,7 @@ import Pricing from "./pages/Host/Pricing"
 import Photos from "./pages/Host/Photos"
 import NotFound from "./pages/NotFound"
 import Login from "./pages/Login"
+import Signup from "./pages/Signup"
 import AuthLayout from "./components/AuthLayout"
 
 export default function App() {
@@ -28,6 +29,7 @@ export default function App() {
           <Route path="vans/:id" element={<VanDetail />} />
 
           <Route path="login" element={<Login />} />
+          <Route path="signup" element={<Signup />} />
 
           <Route element={<AuthLayout />}>
             <Route path="host" element={<HostLayout />}>

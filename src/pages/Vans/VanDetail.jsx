@@ -1,5 +1,5 @@
 import { useParams } from "react-router"
-import { getVan } from "../../api"
+import { getVan } from "../../services/api"
 import { Link, useLocation } from "react-router"
 import { ArrowLeft } from "lucide-react"
 import { useEffect, useState } from "react"

@@ -1,13 +1,11 @@
 import { useState } from "react"
-import { useLocation, useNavigate } from "react-router"
-
-const DUMMY_USER = {
-  email: "test@example.com",
-  password: "p123",
-};
+import { useLocation, useNavigate, Link } from "react-router"
+import { login, logout } from "../services/auth";
+import useAuth from "../hooks/useAuth";
 
 export default function Login() {
 
+  const { user, loading } = useAuth()
   const location = useLocation()
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
@@ -16,17 +14,14 @@ export default function Login() {
   })
   const [error, setError] = useState(null)
 
-  const loggedIn = localStorage.getItem('loggedIn')
   const path = location.state?.path || '/host'
 
-  function handleLogin(creds) {
-    if (creds.email === DUMMY_USER.email && creds.password === DUMMY_USER.password) {
-      localStorage.setItem('loggedIn', true)
-      navigate(path, {
-        replace: true
-      })
-    } else {
-      setError('Invalid credentials')
+  async function handleLogin({ email, password }) {
+    try {
+      await login(email, password)
+      navigate(path, { replace: true })
+    } catch (err) {
+      setError(err.message)
     }
   }
 
@@ -43,8 +38,8 @@ export default function Login() {
     }))
   }
 
-  function handleLogout() {
-    localStorage.removeItem('loggedIn')
+  async function handleLogout() {
+    await logout()
     navigate('/')
   }
 
@@ -59,7 +54,7 @@ export default function Login() {
         error && <p className="error">{error}</p>
       }
       {
-        loggedIn && <p className="msg">
+        user && <p className="msg">
           You are logged in! <span onClick={handleLogout}>Log out</span>
         </p>
       }
@@ -74,6 +69,7 @@ export default function Login() {
             value={formData.email}
             onChange={handleChange}
             className="email"
+            required
           />
         </label>
         <label>
@@ -84,11 +80,19 @@ export default function Login() {
             onChange={handleChange}
             className="pw"
             type="password"
+            required
           />
         </label>
-        <button type="submit">Log in</button>
+        <button
+          type="submit"
+          disabled={loading}
+        >
+          Log in
+        </button>
       </form>
-      <p>Don't have an acconut? <span title="just UI">Create one now</span></p>
+      <p>Don't have an account?
+        <Link className="signup" to="/signup">Create one now</Link>
+      </p>
     </div>
   )
 }

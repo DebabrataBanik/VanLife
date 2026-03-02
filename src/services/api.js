@@ -1,4 +1,4 @@
-import { db } from "./firebase";
+import { db } from "../firebase";
 import { collection, getDocs, doc, getDoc, query, where } from "firebase/firestore";
 
 // this collection ref is for the vans collection in our firestore

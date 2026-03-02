@@ -1,5 +1,5 @@
 import { Star } from "lucide-react"
-import { getHostVans } from "../../api"
+import { getHostVans } from "../../services/api"
 import { Link } from "react-router"
 import { useState, useEffect } from "react"
 
