@@ -18,7 +18,6 @@ export default function Signup() {
   const path = location.state?.path || '/host'
 
   async function handleSignup(email, password) {
-    console.log(email, password)
     try {
       await signup(email, password)
       navigate(path, { replace: true })
