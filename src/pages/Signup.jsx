@@ -23,7 +23,7 @@ export default function Signup() {
       await signup(email, password)
       navigate(path, { replace: true })
     } catch (err) {
-      setError(err.message)
+      setError(err)
     }
   }
 

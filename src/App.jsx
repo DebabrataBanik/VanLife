@@ -31,8 +31,8 @@ export default function App() {
 
           <Route element={<LoginLayout />}>
             <Route path="login" element={<Login />} />
+            <Route path="signup" element={<Signup />} />
           </Route>
-          <Route path="signup" element={<Signup />} />
 
           <Route element={<AuthLayout />}>
             <Route path="host" element={<HostLayout />}>

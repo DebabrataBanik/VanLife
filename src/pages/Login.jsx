@@ -19,7 +19,7 @@ export default function Login() {
     try {
       await login(email, password)
     } catch (err) {
-      setError(err.message)
+      setError(err)
     }
   }
 
