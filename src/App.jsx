@@ -17,6 +17,7 @@ import NotFound from "./pages/NotFound"
 import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 import AuthLayout from "./components/AuthLayout"
+import LoginLayout from "./components/LoginLayout"
 
 export default function App() {
   return (
@@ -28,7 +29,9 @@ export default function App() {
           <Route path="vans" element={<Vans />} />
           <Route path="vans/:id" element={<VanDetail />} />
 
-          <Route path="login" element={<Login />} />
+          <Route element={<LoginLayout />}>
+            <Route path="login" element={<Login />} />
+          </Route>
           <Route path="signup" element={<Signup />} />
 
           <Route element={<AuthLayout />}>

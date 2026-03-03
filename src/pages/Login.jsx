@@ -1,13 +1,12 @@
 import { useState } from "react"
-import { useLocation, useNavigate, Link } from "react-router"
-import { login, logout } from "../services/auth";
+import { useLocation, Link } from "react-router"
+import { login } from "../services/auth";
 import useAuth from "../hooks/useAuth";
 
 export default function Login() {
 
-  const { user, loading } = useAuth()
+  const { loading } = useAuth()
   const location = useLocation()
-  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -19,7 +18,6 @@ export default function Login() {
   async function handleLogin({ email, password }) {
     try {
       await login(email, password)
-      navigate(path, { replace: true })
     } catch (err) {
       setError(err.message)
     }
@@ -31,16 +29,12 @@ export default function Login() {
   }
 
   function handleChange(e) {
+    if (error) setError(null)
     const { name, value } = e.target
     setFormData(prevData => ({
       ...prevData,
       [name]: value
     }))
-  }
-
-  async function handleLogout() {
-    await logout()
-    navigate('/')
   }
 
   return (
@@ -53,11 +47,6 @@ export default function Login() {
       {
         error && <p className="error">{error}</p>
       }
-      {
-        user && <p className="msg">
-          You are logged in! <span onClick={handleLogout}>Log out</span>
-        </p>
-      }
       <form
         onSubmit={handleSubmit}
         className="form"
@@ -65,17 +54,18 @@ export default function Login() {
         <label>
           <input
             name="email"
-            placeholder="test@example.com"
+            placeholder="Email address"
             value={formData.email}
             onChange={handleChange}
             className="email"
+            type="email"
             required
           />
         </label>
         <label>
           <input
             name="password"
-            placeholder="p123"
+            placeholder="Password"
             value={formData.password}
             onChange={handleChange}
             className="pw"
@@ -91,7 +81,14 @@ export default function Login() {
         </button>
       </form>
       <p>Don't have an account?
-        <Link className="signup" to="/signup">Create one now</Link>
+        <Link
+          to="/signup"
+          replace
+          className="signup-cta"
+          state={{ path }}
+        >
+          Create one now
+        </Link>
       </p>
     </div>
   )

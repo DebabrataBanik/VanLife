@@ -643,13 +643,18 @@ footer {
   }
 }
 
-.signup {
+.signup-cta {
   color: var(--color-button-primary);
   padding-left: 5px;
 
   &:hover {
     text-decoration: underline;
   }
+}
+
+.mid-pw {
+  border: 1px solid #D1D5DB;
+  border-bottom: 0px;
 }
 
 .login-msg {
@@ -680,6 +685,19 @@ footer {
     text-align: center;
     font-size: 14px;
   }
+}
+
+.login-cta {
+  color: var(--color-button-primary);
+  padding-left: 5px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.logout {
+  cursor: pointer;
 }
 
 /* Host Dashboard */
