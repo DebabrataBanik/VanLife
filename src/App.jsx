@@ -1,9 +1,9 @@
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from "react-router"
 import Home from './pages/Home'
 import About from './pages/About'
-import Vans from "./pages/Vans/Vans"
+import Vans, { loader as vansLoader } from "./pages/Vans/Vans"
 import VanDetail from "./pages/Vans/VanDetail"
-import Layout from "./components/Layout"
+import Layout, { MyLoadingScreen } from "./components/Layout"
 import HostLayout from "./components/HostLayout"
 import Dashboard from "./pages/Host/Dashboard"
 import Income from "./pages/Host/Income"
@@ -18,14 +18,24 @@ import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 import AuthLayout from "./components/AuthLayout"
 import LoginLayout from "./components/LoginLayout"
+import Error from "./components/Error"
 
 export default function App() {
 
   const router = createBrowserRouter(createRoutesFromElements(
-    <Route path="/" element={<Layout />}>
+    <Route
+      path="/"
+      element={<Layout />}
+      HydrateFallback={MyLoadingScreen}
+    >
       <Route index element={<Home />} />
       <Route path="about" element={<About />} />
-      <Route path="vans" element={<Vans />} />
+      <Route
+        path="vans"
+        element={<Vans />}
+        errorElement={<Error />}
+        loader={vansLoader}
+      />
       <Route path="vans/:id" element={<VanDetail />} />
 
       <Route element={<LoginLayout />}>

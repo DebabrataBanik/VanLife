@@ -1,33 +1,19 @@
 import Van from '../../components/subcomponents/Van'
-import { useSearchParams } from 'react-router'
+import { useLoaderData, useSearchParams } from 'react-router'
 import { getVans } from '../../services/api'
-import { useEffect, useState } from 'react'
+
+export function loader() {
+  return getVans()
+}
 
 export default function Vans() {
 
   const [searchParams, setSearchParams] = useSearchParams()
-  const [vans, setVans] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
   const filterType = searchParams.get('type')
 
+  const vans = useLoaderData()
+
   const filteredData = filterType ? vans.filter(van => van.type.toLowerCase() === filterType) : vans
-
-
-  useEffect(() => {
-    async function fetchVans() {
-      try {
-        const data = await getVans()
-        setVans(data)
-      } catch (err) {
-        setError(err?.message || 'An error occurred while fetching vans.')
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchVans()
-  }, [])
 
   function buildURL(type) {
     setSearchParams(params => {
@@ -41,14 +27,6 @@ export default function Vans() {
       }
       return params
     }, { replace: true })
-  }
-
-  if (loading) {
-    return <h1 className='status-msg'>Loading...</h1>
-  }
-
-  if (error) {
-    return <h1 className='status-msg'>{error.message}</h1>
   }
 
   return (

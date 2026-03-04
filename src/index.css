@@ -847,4 +847,5 @@ footer {
 .loader {
   display: flex;
   justify-content: center;
+  padding-block: 1rem;
 }
