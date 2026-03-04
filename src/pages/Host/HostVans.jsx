@@ -1,34 +1,13 @@
-import { Link } from "react-router"
-import { useEffect, useState } from "react"
+import { Link, useLoaderData } from "react-router"
 import { getHostVans } from "../../services/api"
+
+export function loader() {
+  return getHostVans()
+}
 
 export default function HostVans() {
 
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
-  const [data, setData] = useState([])
-
-  useEffect(() => {
-    async function fetchHostVans() {
-      try {
-        const data = await getHostVans()
-        setData(data)
-      } catch (err) {
-        setError(err?.message || "An error occurred while fetching the vans")
-      } finally {
-        setLoading(false)
-      }
-    }
-    fetchHostVans()
-  }, [])
-
-  if (loading) {
-    return <h1 className="status-msg">Loading...</h1>
-  }
-
-  if (error) {
-    return <h1 className="status-msg error">{error}</h1>
-  }
+  const data = useLoaderData()
 
   return (
     <div className="host-vans_container">
