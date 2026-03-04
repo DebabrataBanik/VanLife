@@ -2,7 +2,7 @@ import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } 
 import Home from './pages/Home'
 import About from './pages/About'
 import Vans, { loader as vansLoader } from "./pages/Vans/Vans"
-import VanDetail from "./pages/Vans/VanDetail"
+import VanDetail, { loader as vanDetailLoader } from "./pages/Vans/VanDetail"
 import Layout, { MyLoadingScreen } from "./components/Layout"
 import HostLayout from "./components/HostLayout"
 import Dashboard from "./pages/Host/Dashboard"
@@ -36,7 +36,12 @@ export default function App() {
         errorElement={<Error />}
         loader={vansLoader}
       />
-      <Route path="vans/:id" element={<VanDetail />} />
+      <Route
+        path="vans/:id"
+        element={<VanDetail />}
+        errorElement={<Error />}
+        loader={vanDetailLoader}
+      />
 
       <Route element={<LoginLayout />}>
         <Route path="login" element={<Login />} />

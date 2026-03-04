@@ -849,3 +849,8 @@ footer {
   justify-content: center;
   padding-block: 1rem;
 }
+
+.error-page {
+  padding: 1rem;
+  line-height: normal;
+}
