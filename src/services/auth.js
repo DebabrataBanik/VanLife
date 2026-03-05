@@ -5,6 +5,7 @@ function getAuthErrorMessage(code) {
   const errors = {
     'auth/email-already-in-use': 'An account with this email already exists.',
     'auth/invalid-email': 'Please enter a valid email address.',
+    'auth/missing-password': 'Please enter a password.',
     'auth/weak-password': 'Password should be at least 6 characters.',
     'auth/user-not-found': 'No account found with this email.',
     'auth/wrong-password': 'Incorrect password.',

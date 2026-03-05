@@ -623,6 +623,11 @@ footer {
   &:hover {
     box-shadow: 1px 1px 1px var(--color-footer-foreground);
   }
+
+  &:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+  }
 }
 
 

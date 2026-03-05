@@ -1,48 +1,27 @@
-import { Link, useLocation } from "react-router"
-import { useState } from "react"
+import { Link, Form, useActionData, useNavigation } from "react-router"
 import { signup } from "../services/auth"
-import useAuth from "../hooks/useAuth"
+
+export async function action({ request }) {
+  const formData = await request.formData()
+  const email = formData.get('email')
+  const password = formData.get('password')
+  const conf_pw = formData.get('confirm_password')
+
+  try {
+    if (password === conf_pw) {
+      await signup(email, password)
+    } else {
+      return "Your passwords don't match!"
+    }
+  } catch (error) {
+    return error
+  }
+}
 
 export default function Signup() {
 
-  const location = useLocation()
-  const { loading } = useAuth()
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-    confirm_password: ''
-  })
-  const [error, setError] = useState(null)
-
-  const path = location.state?.path || '/host'
-
-  async function handleSignup(email, password) {
-    try {
-      await signup(email, password)
-    } catch (err) {
-      setError(err)
-    }
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault()
-    const { email, password, confirm_password } = formData
-    if (password === confirm_password) {
-      handleSignup(email, password)
-      setError(null)
-    } else {
-      setError('Your passwords did not match!')
-    }
-  }
-
-  function handleChange(e) {
-    if (error) setError(null)
-    const { name, value } = e.target
-    setFormData(prevData => ({
-      ...prevData,
-      [name]: value
-    }))
-  }
+  const error = useActionData()
+  const navigation = useNavigation()
 
   return (
     <div className="signup-page">
@@ -50,9 +29,10 @@ export default function Signup() {
       {
         error && <p className="error">{error}</p>
       }
-      <form
+      <Form
         className="form"
-        onSubmit={handleSubmit}
+        method="post"
+        replace
       >
         <label>
           <input
@@ -60,9 +40,6 @@ export default function Signup() {
             className="email"
             type="email"
             placeholder="Email address"
-            required
-            value={formData.email}
-            onChange={handleChange}
           />
         </label>
         <label>
@@ -71,10 +48,6 @@ export default function Signup() {
             className="mid-pw"
             placeholder="Password"
             type="password"
-            minLength={6}
-            required
-            value={formData.password}
-            onChange={handleChange}
           />
         </label>
         <label>
@@ -83,21 +56,19 @@ export default function Signup() {
             className="pw"
             placeholder="Confirm Password"
             type="password"
-            required
-            value={formData.confirm_password}
-            onChange={handleChange}
           />
         </label>
         <button
           type="submit"
-          disabled={loading}
+          disabled={navigation.state === 'submitting'}
         >
           Sign up
         </button>
-      </form>
+      </Form>
+
       <p>Already have an account?
         <Link
-          to={`/login?from=${path}`}
+          to={`/login`}
           replace
           className="login-cta"
         >
