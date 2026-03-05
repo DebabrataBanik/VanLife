@@ -41,6 +41,7 @@ export async function logout() {
 }
 
 export const getUser = () => {
+  if (auth.currentUser) return Promise.resolve(auth.currentUser)
   return new Promise((resolve) => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       unsubscribe()
