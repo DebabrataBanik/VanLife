@@ -1,8 +1,9 @@
-import { useOutletContext } from "react-router"
+import { useRouteLoaderData } from "react-router"
 
 export default function Photos() {
 
-  const data = useOutletContext()
+  const data = useRouteLoaderData('host-van-detail')
+
 
   return (
     <img src={data.imageUrl} alt={data.name} />

@@ -1,8 +1,8 @@
-import { useOutletContext } from 'react-router'
+import { useRouteLoaderData } from 'react-router'
 
 export default function Details() {
 
-  const data = useOutletContext()
+  const data = useRouteLoaderData('host-van-detail')
 
   return (
     <div className="details_container">

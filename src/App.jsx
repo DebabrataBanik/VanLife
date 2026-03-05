@@ -73,6 +73,7 @@ export default function App() {
 
           <Route
             path="vans/:id"
+            id="host-van-detail"
             element={<HostVanDetail />}
             loader={hostVanDetailLoader}
           >
