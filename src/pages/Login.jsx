@@ -1,19 +1,20 @@
 import { useState } from "react"
-import { useLocation, Link } from "react-router"
+import { useSearchParams, Link } from "react-router"
 import { login } from "../services/auth";
 import useAuth from "../hooks/useAuth";
 
 export default function Login() {
 
   const { loading } = useAuth()
-  const location = useLocation()
+  const [searchParams] = useSearchParams()
+
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   })
   const [error, setError] = useState(null)
 
-  const path = location.state?.path || '/host'
+  const path = searchParams.get('from') || '/host'
 
   async function handleLogin({ email, password }) {
     try {
@@ -82,7 +83,7 @@ export default function Login() {
       </form>
       <p>Don't have an account?
         <Link
-          to="/signup"
+          to={`/signup?from=${path}`}
           replace
           className="signup-cta"
           state={{ path }}

@@ -19,6 +19,7 @@ import Signup from "./pages/Signup"
 import AuthLayout from "./components/AuthLayout"
 import LoginLayout from "./components/LoginLayout"
 import Error from "./components/Error"
+import { authMidlleware } from "./middleware/authMiddleware"
 
 export default function App() {
 
@@ -48,7 +49,10 @@ export default function App() {
         <Route path="signup" element={<Signup />} />
       </Route>
 
-      <Route element={<AuthLayout />}>
+      <Route
+        element={<AuthLayout />}
+        middleware={[authMidlleware]}
+      >
         <Route
           path="host"
           element={<HostLayout />}

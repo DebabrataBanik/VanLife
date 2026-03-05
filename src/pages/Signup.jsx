@@ -1,11 +1,10 @@
-import { Link, useNavigate, useLocation } from "react-router"
+import { Link, useLocation } from "react-router"
 import { useState } from "react"
 import { signup } from "../services/auth"
 import useAuth from "../hooks/useAuth"
 
 export default function Signup() {
 
-  const navigate = useNavigate()
   const location = useLocation()
   const { loading } = useAuth()
   const [formData, setFormData] = useState({
@@ -20,7 +19,6 @@ export default function Signup() {
   async function handleSignup(email, password) {
     try {
       await signup(email, password)
-      navigate(path, { replace: true })
     } catch (err) {
       setError(err)
     }
@@ -99,7 +97,7 @@ export default function Signup() {
       </form>
       <p>Already have an account?
         <Link
-          to="/login"
+          to={`/login?from=${path}`}
           replace
           className="login-cta"
         >

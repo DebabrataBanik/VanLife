@@ -1,5 +1,5 @@
 import { auth } from "../firebase";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, getAuth, onAuthStateChanged } from "firebase/auth";
 
 function getAuthErrorMessage(code) {
   const errors = {
@@ -38,4 +38,13 @@ export async function logout() {
   } catch (err) {
     throw getAuthErrorMessage(err.code)
   }
+}
+
+export const getUser = () => {
+  return new Promise((resolve) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      unsubscribe()
+      resolve(user)
+    })
+  })
 }

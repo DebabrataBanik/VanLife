@@ -1,12 +1,12 @@
-import { Navigate, Outlet, useLocation } from "react-router"
+import { Navigate, Outlet, useSearchParams } from "react-router"
 import useAuth from "../hooks/useAuth"
 import { Loader } from "lucide-react"
 
 export default function LoginLayout() {
 
   const { user, loading } = useAuth()
-  const location = useLocation()
-  const path = location.state?.path || '/host'
+  const [searchParams] = useSearchParams()
+  const path = searchParams.get('from') || '/host'
 
   if (loading) {
     return (
