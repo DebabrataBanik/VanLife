@@ -20,6 +20,7 @@ import AuthLayout from "./components/AuthLayout"
 import LoginLayout from "./components/LoginLayout"
 import Error from "./components/Error"
 import { authMidlleware } from "./middleware/authMiddleware"
+import { guestMiddleware } from "./middleware/guestMiddleware"
 
 export default function App() {
 
@@ -44,7 +45,10 @@ export default function App() {
         loader={vanDetailLoader}
       />
 
-      <Route element={<LoginLayout />}>
+      <Route
+        element={<LoginLayout />}
+        middleware={[guestMiddleware]}
+      >
         <Route
           path="login"
           element={<Login />}
