@@ -6,7 +6,7 @@ export function loader({ params }) {
   return getVan(params.id)
 }
 
-export default function HostVanDetail() {
+export function Component() {
 
   const data = useLoaderData()
 

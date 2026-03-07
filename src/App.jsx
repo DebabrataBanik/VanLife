@@ -1,16 +1,9 @@
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from "react-router"
 import Home from './pages/Home'
 import About from './pages/About'
-import Vans, { loader as vansLoader } from "./pages/Vans/Vans"
-import VanDetail, { loader as vanDetailLoader } from "./pages/Vans/VanDetail"
 import Layout, { MyLoadingScreen } from "./components/Layout"
 import HostLayout from "./components/HostLayout"
-import Dashboard, { loader as dashboardLoader } from "./pages/Host/Dashboard"
-import Income from "./pages/Host/Income"
-import Reviews from "./pages/Host/Reviews"
-import HostVans, { loader as hostVansLoader } from "./pages/Host/HostVans"
-import HostVanDetail, { loader as hostVanDetailLoader } from "./pages/Host/HostVanDetail"
-import Details from "./pages/Host/Details"
+import Details from './pages/Host/Details'
 import Pricing from "./pages/Host/Pricing"
 import Photos from "./pages/Host/Photos"
 import NotFound from "./pages/NotFound"
@@ -34,15 +27,13 @@ export default function App() {
       <Route path="about" element={<About />} />
       <Route
         path="vans"
-        element={<Vans />}
+        lazy={() => import('./pages/Vans/Vans')}
         errorElement={<Error />}
-        loader={vansLoader}
       />
       <Route
         path="vans/:id"
-        element={<VanDetail />}
+        lazy={() => import('./pages/Vans/VanDetail')}
         errorElement={<Error />}
-        loader={vanDetailLoader}
       />
 
       <Route
@@ -72,22 +63,25 @@ export default function App() {
         >
           <Route
             index
-            element={<Dashboard />}
-            loader={dashboardLoader}
+            lazy={() => import("./pages/Host/Dashboard")}
           />
-          <Route path="income" element={<Income />} />
-          <Route path="reviews" element={<Reviews />} />
+          <Route
+            path="income"
+            lazy={() => import('./pages/Host/Income')}
+          />
+          <Route
+            path="reviews"
+            lazy={() => import('./pages/Host/Reviews')}
+          />
           <Route
             path="vans"
-            element={<HostVans />}
-            loader={hostVansLoader}
+            lazy={() => import('./pages/Host/HostVans')}
           />
 
           <Route
             path="vans/:id"
             id="host-van-detail"
-            element={<HostVanDetail />}
-            loader={hostVanDetailLoader}
+            lazy={() => import('./pages/Host/HostVanDetail')}
           >
             <Route index element={<Details />} />
             <Route path="pricing" element={<Pricing />} />

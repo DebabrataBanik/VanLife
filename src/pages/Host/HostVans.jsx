@@ -5,7 +5,7 @@ export function loader() {
   return getHostVans()
 }
 
-export default function HostVans() {
+export function Component() {
 
   const data = useLoaderData()
 

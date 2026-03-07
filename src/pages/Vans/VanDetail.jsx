@@ -7,7 +7,7 @@ export function loader({ params }) {
   return getVan(params.id)
 }
 
-export default function VanDetail() {
+export function Component() {
 
   const vanData = useLoaderData()
 
@@ -26,7 +26,7 @@ export default function VanDetail() {
       </Link>
 
       <div className="van-detail_container">
-        <img src={vanData.imageUrl} alt={vanData.name} />
+        <img width={500} height={500} src={vanData.imageUrl} alt={vanData.name} />
         <span className={`van-type ${vanData.type}`}>{vanData.type}</span>
         <h3>{vanData.name}</h3>
         <p className="price"><span>${vanData.price}</span>/day</p>

@@ -6,7 +6,7 @@ export function loader() {
   return getVans()
 }
 
-export default function Vans() {
+export function Component() {
 
   const [searchParams, setSearchParams] = useSearchParams()
   const filterType = searchParams.get('type')

@@ -1,7 +1,6 @@
-import { Star } from "lucide-react";
 import ReviewsImg from '../../assets/images/reviews.png'
 
-export default function Reviews() {
+export function Component() {
   return (
     <section className="reviews-container">
       <div className="title">

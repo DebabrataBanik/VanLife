@@ -1,6 +1,6 @@
 import IncomeImg from '../../assets/images/income.png'
 
-export default function Income() {
+export function Component() {
   return (
     <section className="income-container">
       <h1>Income</h1>

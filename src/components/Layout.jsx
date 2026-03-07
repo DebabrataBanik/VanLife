@@ -11,12 +11,8 @@ export function MyLoadingScreen() {
 
 export default function Layout() {
 
-  const navigation = useNavigation()
-  const isLoading = navigation.state === 'loading'
-
   return (
     <div className="app-container">
-      {/* {isLoading && <h1>Loading...</h1>} */}
       <Header />
       <main>
         <Outlet />

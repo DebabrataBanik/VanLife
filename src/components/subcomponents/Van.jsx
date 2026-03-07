@@ -7,7 +7,7 @@ export default function Van({ data, searchParams }) {
         to={data.id}
         state={{ search: `?${searchParams.toString()}` }}
       >
-        <img src={data.imageUrl} alt={data.name} />
+        <img width={200} height={200} src={data.imageUrl} alt={data.name} />
         <span className={`van-type ${data.type}`}>{data.type}</span>
         <div className="van-info">
           <h3>{data.name}</h3>

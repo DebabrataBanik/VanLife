@@ -6,7 +6,7 @@ export function loader() {
   return getHostVans()
 }
 
-export default function Dashboard() {
+export function Component() {
 
   const data = useLoaderData()
 

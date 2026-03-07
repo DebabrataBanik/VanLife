@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-
 :root {
   --color-background: #FFF7ED;
   --color-foreground: #161616;
@@ -40,6 +38,7 @@ canvas,
 svg {
   display: block;
   max-width: 100%;
+  height: auto;
 }
 
 input,
@@ -144,12 +143,11 @@ footer {
 }
 
 .home {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.46), rgba(0, 0, 0, 0.46)), url("./assets/images/home-hero.jpg") no-repeat center center;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.46), rgba(0, 0, 0, 0.46)), url("./assets/images/home-hero.jpeg") no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  background-position: left;
   min-height: 90vh;
   color: white;
   display: flex;
@@ -300,7 +298,7 @@ footer {
 .van-list_container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .van-item {
@@ -309,7 +307,8 @@ footer {
 }
 
 .van-item img {
-  margin-bottom: 10px;
+  width: 100%;
+  margin-bottom: 5px;
   aspect-ratio: 1;
   border-radius: 10px;
 }
@@ -858,4 +857,9 @@ footer {
 .error-page {
   padding: 1rem;
   line-height: normal;
+}
+
+.loading-msg {
+  padding: 1rem;
+  font-weight: 600;
 }
