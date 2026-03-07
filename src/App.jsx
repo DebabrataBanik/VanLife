@@ -17,82 +17,101 @@ import { guestMiddleware } from "./middleware/guestMiddleware"
 
 export default function App() {
 
-  const router = createBrowserRouter(createRoutesFromElements(
-    <Route
-      path="/"
-      element={<Layout />}
-      HydrateFallback={MyLoadingScreen}
-    >
-      <Route index element={<Home />} />
-      <Route path="about" element={<About />} />
-      <Route
-        path="vans"
-        lazy={() => import('./pages/Vans/Vans')}
-        errorElement={<Error />}
-      />
-      <Route
-        path="vans/:id"
-        lazy={() => import('./pages/Vans/VanDetail')}
-        errorElement={<Error />}
-      />
-
-      <Route
-        element={<LoginLayout />}
-        middleware={[guestMiddleware]}
-      >
-        <Route
-          path="login"
-          element={<Login />}
-          action={loginAction}
-        />
-        <Route
-          path="signup"
-          element={<Signup />}
-          action={signupAction}
-        />
-      </Route>
-
-      <Route
-        element={<AuthLayout />}
-        middleware={[authMidlleware]}
-      >
-        <Route
-          path="host"
-          element={<HostLayout />}
-          errorElement={<Error />}
-        >
-          <Route
-            index
-            lazy={() => import("./pages/Host/Dashboard")}
-          />
-          <Route
-            path="income"
-            lazy={() => import('./pages/Host/Income')}
-          />
-          <Route
-            path="reviews"
-            lazy={() => import('./pages/Host/Reviews')}
-          />
-          <Route
-            path="vans"
-            lazy={() => import('./pages/Host/HostVans')}
-          />
-
-          <Route
-            path="vans/:id"
-            id="host-van-detail"
-            lazy={() => import('./pages/Host/HostVanDetail')}
-          >
-            <Route index element={<Details />} />
-            <Route path="pricing" element={<Pricing />} />
-            <Route path="photos" element={<Photos />} />
-          </Route>
-        </Route>
-      </Route>
-
-      <Route path="*" element={<NotFound />} />
-    </Route>
-  ))
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      Component: Layout,
+      HydrateFallback: MyLoadingScreen,
+      children: [
+        {
+          index: true,
+          Component: Home
+        },
+        {
+          path: 'about',
+          Component: About
+        },
+        {
+          path: 'vans',
+          lazy: () => import('./pages/Vans/Vans'),
+          errorElement: Error
+        },
+        {
+          path: 'vans/:id',
+          lazy: () => import('./pages/Vans/VanDetail'),
+          errorElement: Error
+        },
+        {
+          Component: LoginLayout,
+          middleware: [guestMiddleware],
+          children: [
+            {
+              path: 'login',
+              Component: Login,
+              action: loginAction
+            },
+            {
+              path: 'signup',
+              Component: Signup,
+              action: signupAction
+            }
+          ]
+        },
+        {
+          Component: AuthLayout,
+          middleware: [authMidlleware],
+          children: [
+            {
+              path: 'host',
+              Component: HostLayout,
+              errorElement: Error,
+              children: [
+                {
+                  index: true,
+                  lazy: () => import('./pages/Host/Dashboard')
+                },
+                {
+                  path: 'income',
+                  lazy: () => import('./pages/Host/Income')
+                },
+                {
+                  path: 'reviews',
+                  lazy: () => import('./pages/Host/Reviews')
+                },
+                {
+                  path: 'vans',
+                  lazy: () => import('./pages/Host/HostVans')
+                },
+                {
+                  path: 'vans/:id',
+                  id: 'host-van-detail',
+                  lazy: () => import('./pages/Host/HostVanDetail'),
+                  children: [
+                    {
+                      index: true,
+                      Component: Details
+                    },
+                    {
+                      path: 'pricing',
+                      Component: Pricing
+                    },
+                    {
+                      path: 'photos',
+                      Component: Photos
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          path: '*',
+          Component: NotFound
+        }
+      ]
+    }
+  ])
 
   return (
     <RouterProvider router={router} />
