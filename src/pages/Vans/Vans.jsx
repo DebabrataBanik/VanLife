@@ -3,8 +3,14 @@ import { useLoaderData, useSearchParams, Await } from 'react-router'
 import { getVans } from '../../services/api'
 import { Suspense } from 'react'
 
+// this prevents default loader behavior to revalidate on every same path navigation
+export function shouldRevalidate({ currentUrl, nextUrl, defaultShouldRevalidate }) {
+  if (currentUrl.pathname === nextUrl.pathname) return false
+
+  return defaultShouldRevalidate
+}
+
 export function loader() {
-  console.log('hello')
   // returns successfully with a Promise
   return { vansPromise: getVans() }
 }
