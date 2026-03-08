@@ -1,6 +1,6 @@
 import Header from "./Header"
 import Footer from "./Footer"
-import { Outlet, useNavigation } from "react-router"
+import { Outlet } from "react-router"
 import { Loader } from "lucide-react"
 
 export function MyLoadingScreen() {

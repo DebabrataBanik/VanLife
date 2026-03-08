@@ -6,7 +6,6 @@ export async function guestMiddleware({ request }) {
   if (user) {
     const url = new URL(request.url)
     const redirectTo = url.searchParams.get('from') || 'host'
-    console.log(url)
     throw redirect(redirectTo)
   }
 }

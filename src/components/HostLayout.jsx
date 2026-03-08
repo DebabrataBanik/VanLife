@@ -1,9 +1,6 @@
-import { NavLink, Outlet, useNavigation } from "react-router";
+import { NavLink, Outlet } from "react-router";
 
 export default function HostLayout() {
-
-  const navigation = useNavigation()
-  const isLoading = navigation.state === 'loading'
 
   return (
     <div className="host-layout">
@@ -17,13 +14,7 @@ export default function HostLayout() {
         <NavLink
           className={({ isActive }) => isActive ? 'active' : null} to='reviews'>Reviews</NavLink>
       </nav>
-      {
-        isLoading
-          ?
-          <p className="loading-msg">Loading Content...</p>
-          :
-          <Outlet />
-      }
+      <Outlet />
     </div>
   )
 }

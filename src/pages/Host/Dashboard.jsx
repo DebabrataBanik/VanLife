@@ -1,14 +1,33 @@
 import { Star } from "lucide-react"
 import { getHostVans } from "../../services/api"
-import { Link, useLoaderData } from "react-router"
+import { Await, Link, useLoaderData } from "react-router"
+import { Suspense } from "react"
 
 export function loader() {
-  return getHostVans()
+  return { vansPromise: getHostVans() }
 }
 
 export function Component() {
 
-  const data = useLoaderData()
+  const { vansPromise } = useLoaderData()
+
+  function renderVans(data) {
+    return (
+      <div className="host-vans">
+        {
+          data.map(van => (
+            <div key={van.id} className="host-van">
+              <img src={van.imageUrl} alt={van.name} />
+              <div className="host-van-info">
+                <h3>{van.name}</h3>
+                <p><span>${van.price}</span>/day</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    )
+  }
 
   return (
     <section>
@@ -34,19 +53,12 @@ export function Component() {
           <h3>Your listed vans</h3>
           <Link to='vans'>View all</Link>
         </div>
-        <div className="host-vans">
-          {
-            data.map(van => (
-              <div key={van.id} className="host-van">
-                <img src={van.imageUrl} alt={van.name} />
-                <div className="host-van-info">
-                  <h3>{van.name}</h3>
-                  <p><span>${van.price}</span>/day</p>
-                </div>
-              </div>
-            ))
-          }
-        </div>
+
+        <Suspense fallback={<h2>Loading content...</h2>}>
+          <Await resolve={vansPromise}>
+            {(resolvedVans) => renderVans(resolvedVans)}
+          </Await>
+        </Suspense>
       </div>
 
     </section>
