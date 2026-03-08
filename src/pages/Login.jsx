@@ -1,4 +1,4 @@
-import { Link, Form, useActionData, useNavigation } from "react-router"
+import { Link, Form, useActionData, useNavigation, useSearchParams } from "react-router"
 import { login } from "../services/auth";
 
 export async function action({ request }) {
@@ -17,9 +17,15 @@ export default function Login() {
 
   const error = useActionData()
   const navigation = useNavigation()
+  const [searchParams] = useSearchParams()
+
+  const message = searchParams.get('message') || ''
 
   return (
     <div className="login-page">
+      {
+        message && <p className="error">{message}</p>
+      }
       <h1>Sign in to your account</h1>
       {
         error && <p className="error">{error}</p>
